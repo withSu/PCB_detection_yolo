@@ -2,7 +2,7 @@ import os
 import json
 
 # JSON 파일이 저장된 디렉터리 경로
-json_dir = '../dataset/2_raw_json/'
+json_dir = ''
 
 # 변환된 JSON 파일을 저장할 디렉터리 경로
 output_dir = '../dataset/3_new_raw_json/'

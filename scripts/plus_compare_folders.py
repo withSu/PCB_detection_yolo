@@ -28,7 +28,7 @@ def compare_folders(folder1, folder2):
     print("폴더2에만 있는 JSON 파일:", unmatched_jsons_in_folder2)
 
 # 🔥 폴더 경로를 여기에 직접 입력
-folder1_path = "/home/a/A_2024_selfcode/PCB/GT/kbs_dragged2/before"
+folder1_path = "/home/a/A_2024_selfcode/PCB/dataset/0_raw_data/kbs_dragged2/before"
 folder2_path = "/home/a/A_2024_selfcode/PCB/GT/kbs_only_rect_and_draged"
 
 compare_folders(folder1_path, folder2_path)

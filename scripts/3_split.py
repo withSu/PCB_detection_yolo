@@ -55,29 +55,7 @@ def copy_files(files, image_dst, label_dst):
 copy_files(train_files, OUTPUT_IMAGES_TRAIN, OUTPUT_LABELS_TRAIN)
 copy_files(val_files, OUTPUT_IMAGES_VAL, OUTPUT_LABELS_VAL)
 
-# 📝 **dataset.yaml 파일 생성**
-dataset_yaml_path = os.path.join(DATASET_DIR, 'dataset.yaml')
-with open(dataset_yaml_path, 'w') as yaml_file:
-    yaml_file.write(f"""train: {os.path.abspath(OUTPUT_IMAGES_TRAIN)}
-val: {os.path.abspath(OUTPUT_IMAGES_VAL)}
-
-nc: 11
-names: [
-  'Chip',
-  'CSolder',
-  '2sideIC',
-  'SOD',
-  'Circle',
-  '4sideIC',
-  'Tantalum',
-  'BGA',
-  'MELF',
-  'Crystal',
-  'Array'
-]
-""")
 
 print(f"✅ 데이터셋 분할 및 YAML 파일 생성 완료")
 print(f" - 학습 데이터: {len(train_files)}개")
 print(f" - 검증 데이터: {len(val_files)}개")
-print(f" - dataset.yaml: {dataset_yaml_path}")

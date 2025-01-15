@@ -2,7 +2,7 @@ import json
 import os
 
 # 경로 설정
-INPUT_DIR = os.path.join("..", "dataset", "2_raw_json")
+INPUT_DIR = os.path.join("..", "dataset", "3_new_raw_json")
 OUTPUT_DIR = os.path.join("..", "dataset", "4_labels")
 
 # 출력 디렉터리 없으면 생성
@@ -10,17 +10,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # 클래스 매핑 (YOLO 형식은 숫자 클래스 ID를 사용함)
 CLASS_NAMES = {
-    'Chip': 0,
-    'CSolder': 1,
-    '2sideIC': 2,
-    'SOD': 3,
-    'Circle': 4,
-    '4sideIC': 5,
-    'Tantalum': 6,
-    'BGA': 7,
-    'MELF': 8,
-    'Crystal': 9,
-    'Array': 10
+    'component': 0,
 }
 
 def convert_to_yolo(input_path, output_path):
