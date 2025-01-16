@@ -13,7 +13,8 @@ CLASS_NAMES = {
     'component': 0,
 }
 
-def convert_to_yolo(input_path, output_path):
+
+def convert_to_yolo_obb(input_path, output_path):
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
@@ -27,7 +28,6 @@ def convert_to_yolo(input_path, output_path):
     with open(output_path, 'w', encoding='utf-8') as out_f:
         for shape in data.get('shapes', []):
             label = shape.get('label', 'unknown')
-            shape_type = shape.get('shape_type')
             points = shape.get('points', [])
             
             # 클래스 ID 변환
@@ -36,53 +36,42 @@ def convert_to_yolo(input_path, output_path):
                 continue
             class_id = CLASS_NAMES[label]
             
-            if shape_type == 'polygon':
-                x_coords = [point[0] for point in points]
-                y_coords = [point[1] for point in points]
-                
-                x_min = min(x_coords)
-                x_max = max(x_coords)
-                y_min = min(y_coords)
-                y_max = max(y_coords)
-                
-                x_center = (x_min + x_max) / 2 / image_width
-                y_center = (y_min + y_max) / 2 / image_height
-                width = (x_max - x_min) / image_width
-                height = (y_max - y_min) / image_height
-                
-                out_f.write(f"{class_id} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
+            if len(points) == 4:  # 꼭짓점 4개를 가진 OBB
+                x_coords = [point[0] / image_width for point in points]
+                y_coords = [point[1] / image_height for point in points]
+                out_f.write(f"{class_id} " + " ".join([f"{x:.6f} {y:.6f}" for x, y in zip(x_coords, y_coords)]) + "\n")
             
-            elif shape_type == 'rectangle':
-                x_min = points[0][0]
-                y_min = points[0][1]
-                x_max = points[1][0]
-                y_max = points[1][1]
-                
-                x_center = (x_min + x_max) / 2 / image_width
-                y_center = (y_min + y_max) / 2 / image_height
-                width = (x_max - x_min) / image_width
-                height = (y_max - y_min) / image_height
-                
-                out_f.write(f"{class_id} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
-            
+            elif len(points) == 2:  # 두 점만 있는 경우, 사각형으로 변환
+                x1, y1 = points[0]
+                x2, y2 = points[1]
+                rect_points = [
+                    [x1 / image_width, y1 / image_height],  # 좌상단
+                    [x2 / image_width, y1 / image_height],  # 우상단
+                    [x2 / image_width, y2 / image_height],  # 우하단
+                    [x1 / image_width, y2 / image_height]   # 좌하단
+                ]
+                x_coords = [point[0] for point in rect_points]
+                y_coords = [point[1] for point in rect_points]
+                out_f.write(f"{class_id} " + " ".join([f"{x:.6f} {y:.6f}" for x, y in zip(x_coords, y_coords)]) + "\n")
             else:
-                print(f"❌ Unsupported shape_type: '{shape_type}' in {input_path}. Skipping...")
+                print(f"❌ Unsupported shape with {len(points)} points in {input_path}. Skipping...")
+
 
 def process_directory():
     json_files = [f for f in os.listdir(INPUT_DIR) if f.endswith(".json")]
-    
+
     if not json_files:
         print("❗ No JSON files found in the input directory.")
         return
-    
+
     for file_name in json_files:
         input_path = os.path.join(INPUT_DIR, file_name)
         output_file_name = os.path.splitext(file_name)[0] + ".txt"
         output_path = os.path.join(OUTPUT_DIR, output_file_name)
-        
-        convert_to_yolo(input_path, output_path)
+
+        convert_to_yolo_obb(input_path, output_path)
         print(f"✅ Converted: {input_path} → {output_path}")
 
 if __name__ == "__main__":
     process_directory()
-    print("✅ JSON to YOLO conversion complete!")
+    print("✅ JSON to YOLO OBB conversion complete!")

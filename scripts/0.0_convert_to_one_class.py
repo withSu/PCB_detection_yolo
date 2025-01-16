@@ -38,3 +38,4 @@ classes_to_keep = {"AL-Capacitor", "BGA", "C-chip", "Crystal", "DPAK", "Inductor
 new_class_name = "component"
 
 process_json_files(input_folder, output_folder, classes_to_keep, new_class_name)
+
