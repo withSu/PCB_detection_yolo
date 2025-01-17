@@ -5,7 +5,7 @@ import random
 # 📁 **경로 설정**
 DATASET_DIR = '../dataset'
 IMAGES_DIR = os.path.join(DATASET_DIR, '1_images')
-LABELS_DIR = os.path.join(DATASET_DIR, '4_labels')
+LABELS_DIR = os.path.join(DATASET_DIR, '5_after_otsu_only_under_threshold_labels')
 OUTPUT_DIR = DATASET_DIR
 
 # YOLO 요구 구조
