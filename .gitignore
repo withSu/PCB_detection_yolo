@@ -2,6 +2,8 @@ dataset/
 GT/
 
 
-dataset/
+dataset/*
+!dataset/.gitkeep
+
 runs/
 scripts/runs/detect/**/weights/*.pt
