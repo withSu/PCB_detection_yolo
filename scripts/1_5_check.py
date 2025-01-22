@@ -1,8 +1,8 @@
 import os
 
 # 경로 설정
-IMAGES_DIR = '/home/a/A_2024_selfcode/PCB/dataset/1_images'
-LABELS_DIR = '/home/a/A_2024_selfcode/PCB/dataset/5_after_otsu_only_under_threshold_labels'
+IMAGES_DIR = '/home/a/A_2024_selfcode/PCB_yolo/dataset/1_images'
+LABELS_DIR = '/home/a/A_2024_selfcode/PCB_yolo/dataset/5_coco_filtered_labels'
 
 # 지원하는 이미지 확장자
 IMAGE_EXTENSIONS = ['.jpg', '.png', '.jpeg']
