@@ -7,3 +7,4 @@ dataset/*
 
 runs/
 scripts/runs/detect/**/weights/*.pt
+*.jpg
