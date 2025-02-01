@@ -99,7 +99,7 @@ def visualize_labels(label_dir, image_dir, output_dir, is_obb=True, alpha=0.5):
 
 if __name__ == "__main__":
     visualize_labels(
-        label_dir="/home/a/A_2024_selfcode/PCB_yolo/dataset/5_after_otsu_only_under_threshold_labels",  # 텍스트 파일이 있는 경로
+        label_dir="/home/a/A_2024_selfcode/PCB_yolo/dataset/4_labels",  # 텍스트 파일이 있는 경로
         image_dir="/home/a/A_2024_selfcode/PCB_yolo/dataset/1_images",  # 이미지 파일이 있는 경로
         output_dir="/home/a/A_2024_selfcode/PCB_yolo/dataset/6_lets_visualize_coco",  # 결과 이미지를 저장할 경로
         is_obb=True,  # OBB 형식(True) 또는 YOLO 형식(False) 선택
