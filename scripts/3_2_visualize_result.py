@@ -100,9 +100,9 @@ def visualize_labels(label_dir, image_dir, output_dir, is_obb=True, alpha=0.5):
 if __name__ == "__main__":
     visualize_labels(
         
-        label_dir="/home/a/A_2024_selfcode/PCB/scripts/runs/obb/predict3/labels",   # 추론 라벨 경로
-        image_dir="/home/a/A_2024_selfcode/PCB/dataset/test/images",  # 추론 이미지 경로
-        output_dir="/home/a/A_2024_selfcode/PCB/scripts/runs/obb/predict3/visualized",  # 저장 경로
+        label_dir="/home/a/A_2024_selfcode/PCB_yolo/scripts/runs/obb/predict4/labels",   # 추론 라벨 경로
+        image_dir="/home/a/A_2024_selfcode/PCB_yolo/dataset/test/images",  # 추론 이미지 경로
+        output_dir="/home/a/A_2024_selfcode/PCB_yolo/scripts/runs/obb/predict4/visualized",  # 저장 경로
         is_obb=True,  # OBB 형식(True) 또는 YOLO 형식(False) 선택
         alpha=0.5  # 투명도 (0.0: 완전 투명, 1.0: 불투명)
     )
