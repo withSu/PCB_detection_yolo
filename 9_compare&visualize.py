@@ -22,7 +22,7 @@ def calculate_iou(boxA, boxB):
 
 # 데이터 로드
 gt_file = "/home/a/A_2024_selfcode/PCB_yolo/dataset/ground_truth.json"
-pred_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run/coco_predictions_final_normalized.json"
+pred_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run2/coco_predictions_final_normalized.json"
 image_dir = "/home/a/A_2024_selfcode/PCB_yolo/dataset/images/val"  
 
 with open(gt_file, "r") as f:

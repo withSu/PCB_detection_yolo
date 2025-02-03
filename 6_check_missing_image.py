@@ -74,6 +74,6 @@ if __name__ == "__main__":
     labels_dir = "/home/a/A_2024_selfcode/PCB_yolo/dataset/labels/val"
     images_dir = "/home/a/A_2024_selfcode/PCB_yolo/dataset/images/val"
     gt_file = "/home/a/A_2024_selfcode/PCB_yolo/dataset/ground_truth.json"
-    pred_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run/coco_predictions.json"
+    pred_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run2/coco_predictions.json"
 
     check_missing_files(labels_dir, images_dir, gt_file, pred_file)

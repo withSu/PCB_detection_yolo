@@ -103,18 +103,18 @@ def normalize_bbox(gt_file, pred_file, output_file, img_width=3904, img_height=3
 if __name__ == "__main__":
     # 1단계: image_id 수정
     gt_path = "dataset/ground_truth.json"
-    pred_path = "outputs_for_exper/run/coco_predictions.json"
-    output_path = "outputs_for_exper/run/coco_predictions_fixed.json"
+    pred_path = "outputs_for_exper/run2/coco_predictions.json"
+    output_path = "outputs_for_exper/run2/coco_predictions_fixed.json"
     fix_image_id(gt_path, pred_path, output_path)
 
     # 2단계: category_id 수정
     gt_path = "dataset/ground_truth.json"
-    pred_path = "outputs_for_exper/run/coco_predictions_fixed.json"
-    output_path = "outputs_for_exper/run/coco_predictions_final.json"
+    pred_path = "outputs_for_exper/run2/coco_predictions_fixed.json"
+    output_path = "outputs_for_exper/run2/coco_predictions_final.json"
     fix_category_id(gt_path, pred_path, output_path)
 
     # 3단계: bbox 정규화
     gt_path = "dataset/ground_truth.json"
-    pred_path = "outputs_for_exper/run/coco_predictions_final.json"
-    output_path = "outputs_for_exper/run/coco_predictions_final_normalized.json"
+    pred_path = "outputs_for_exper/run2/coco_predictions_final.json"
+    output_path = "outputs_for_exper/run2/coco_predictions_final_normalized.json"
     normalize_bbox(gt_path, pred_path, output_path)

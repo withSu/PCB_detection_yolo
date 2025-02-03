@@ -35,7 +35,7 @@ def convert_yolo_to_coco(yolo_pred_file, coco_output_file):
 
 # 변환 실행
 if __name__ == "__main__":
-    yolo_pred_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run/predictions.json"
-    coco_output_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run/coco_predictions.json"
+    yolo_pred_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run2/predictions.json"
+    coco_output_file = "/home/a/A_2024_selfcode/PCB_yolo/outputs_for_exper/run2/coco_predictions.json"
 
     convert_yolo_to_coco(yolo_pred_file, coco_output_file)
